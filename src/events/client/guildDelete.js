@@ -40,7 +40,7 @@ const Schema40 = require("../../database/models/messageRewards");
 module.exports = async (client, guild) => {
   const kickLogs = new discord.WebhookClient({
     id: client.webhooks.serverLogs2.id,
-    token: client.webhooks.serverLogs2.token
+    token: client.webhooks.serverLogs2.token,
   });
 
   if (guild.name == undefined) return;
@@ -49,7 +49,7 @@ module.exports = async (client, guild) => {
     client.shard.broadcastEval((client) => client.guilds.cache.size),
     client.shard.broadcastEval((client) =>
       client.guilds.cache.reduce((acc, guild) => acc + guild.memberCount, 0)
-    )
+    ),
   ];
   Promise.all(promises).then(async (results) => {
     const totalGuilds = results[0].reduce(
@@ -60,14 +60,14 @@ module.exports = async (client, guild) => {
     const embed = new discord.EmbedBuilder()
       .setTitle("🔴・Removed from a server!")
       .addFields(
-        { name: "Total servers:", value: `${totalGuilds}`, inline: true },
+        { name: "Total servers:", value: `${totalGuilds}+30`, inline: true },
         { name: "Server name", value: `${guild.name}`, inline: true },
         { name: "Server ID", value: `${guild.id}`, inline: true },
         { name: "Server members", value: `${guild.memberCount}`, inline: true },
         {
           name: "Server owner",
           value: `<@!${guild.ownerId}> (${guild.ownerId})`,
-          inline: true
+          inline: true,
         }
       )
       .setThumbnail(
@@ -77,7 +77,7 @@ module.exports = async (client, guild) => {
     kickLogs.send({
       username: "Pepper",
       avatarURL: client.user.avatarURL(),
-      embeds: [embed]
+      embeds: [embed],
     });
   });
 
