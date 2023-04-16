@@ -10,25 +10,25 @@ module.exports = async (client, interaction, args) => {
         {
           name: "👑┆Owner name",
           value: `Jahneer`,
-          inline: true
+          inline: true,
         },
         {
           name: "🏷┆Discord tag",
           value: `WarM4chineRoxX#2013`,
-          inline: true
+          inline: true,
         },
         {
           name: "🏢┆Organization",
-          value: `CoreWare`,
-          inline: true
+          value: `WarMax`,
+          inline: true,
         },
         {
           name: "🌐┆Website",
           value: `[https://husnuljahneer.github.io/](https://husnuljahneer.github.io/)`,
-          inline: true
-        }
+          inline: true,
+        },
       ],
-      type: "editreply"
+      type: "editreply",
     },
     interaction
   );
