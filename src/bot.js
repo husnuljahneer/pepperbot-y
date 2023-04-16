@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const fs = require("fs");
-
+const fetch = require("node-fetch");
 const { Manager } = require("erela.js");
 const Spotify = require("erela.js-spotify");
 const Facebook = require("erela.js-facebook");

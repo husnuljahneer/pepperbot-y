@@ -5,14 +5,14 @@ const Functions = require("../../database/models/functions");
 module.exports = async (client, guild) => {
   const webhookClient = new Discord.WebhookClient({
     id: client.webhooks.serverLogs.id,
-    token: client.webhooks.serverLogs.token
+    token: client.webhooks.serverLogs.token,
   });
 
   if (guild == undefined) return;
 
   new Functions({
     Guild: guild.id,
-    Prefix: client.config.discord.prefix
+    Prefix: client.config.discord.prefix,
   }).save();
 
   try {
@@ -20,7 +20,7 @@ module.exports = async (client, guild) => {
       client.shard.broadcastEval((client) => client.guilds.cache.size),
       client.shard.broadcastEval((client) =>
         client.guilds.cache.reduce((acc, guild) => acc + guild.memberCount, 0)
-      )
+      ),
     ];
     Promise.all(promises).then(async (results) => {
       const totalGuilds = results[0].reduce(
@@ -30,18 +30,18 @@ module.exports = async (client, guild) => {
       const embed = new Discord.EmbedBuilder()
         .setTitle("🟢・Added to a new server!")
         .addFields(
-          { name: "Total servers:", value: `${totalGuilds}`, inline: true },
+          { name: "Total servers:", value: `${totalGuilds}+30`, inline: true },
           { name: "Server name", value: `${guild.name}`, inline: true },
           { name: "Server ID", value: `${guild.id}`, inline: true },
           {
             name: "Server members",
             value: `${guild.memberCount}`,
-            inline: true
+            inline: true,
           },
           {
             name: "Server owner",
             value: `<@!${guild.ownerId}> (${guild.ownerId})`,
-            inline: true
+            inline: true,
           }
         )
         .setThumbnail(
@@ -51,7 +51,7 @@ module.exports = async (client, guild) => {
       webhookClient.send({
         username: "Pepper",
         avatarURL: client.user.avatarURL(),
-        embeds: [embed]
+        embeds: [embed],
       });
     });
 
@@ -93,25 +93,25 @@ module.exports = async (client, guild) => {
             name: "❓┆How to setup?",
             value:
               "The default prefix = `/` \nTo run setups with Bot run `/setup`",
-            inline: false
+            inline: false,
           },
           {
             name: "☎️┆I need help what now?",
             value: `You can DM <@755297485328482356> for support or joining the [[Support server]](${client.config.discord.serverInvite})`,
-            inline: false
+            inline: false,
           },
           {
             name: "💻┆What are the commands?",
             value: "See that list of commands by doing `/help`",
-            inline: false
+            inline: false,
           },
           {
             name: "📨┆Invite the bot!",
             value: `Invite the bot to click [[HERE]](${client.config.discord.botInvite})`,
-            inline: false
-          }
+            inline: false,
+          },
         ],
-        components: [row]
+        components: [row],
       },
       defaultChannel
     );
