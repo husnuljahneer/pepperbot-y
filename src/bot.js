@@ -11,7 +11,7 @@ const API_URL_HF = process.env.API_URL_HF;
 const client = new Discord.Client({
   allowedMentions: {
     parse: ["users", "roles"],
-    repliedUser: true
+    repliedUser: true,
   },
   autoReconnect: true,
   disabledEvents: ["TYPING_START"],
@@ -21,7 +21,7 @@ const client = new Discord.Client({
     Discord.Partials.Message,
     Discord.Partials.Reaction,
     Discord.Partials.User,
-    Discord.Partials.GuildScheduledEvent
+    Discord.Partials.GuildScheduledEvent,
   ],
   intents: [
     Discord.GatewayIntentBits.Guilds,
@@ -39,9 +39,9 @@ const client = new Discord.Client({
     Discord.GatewayIntentBits.DirectMessageReactions,
     Discord.GatewayIntentBits.DirectMessageTyping,
     Discord.GatewayIntentBits.GuildScheduledEvents,
-    Discord.GatewayIntentBits.MessageContent
+    Discord.GatewayIntentBits.MessageContent,
   ],
-  restTimeOffset: 0
+  restTimeOffset: 0,
 });
 
 const clientID = process.env.SPOTIFY_CLIENT_ID;
@@ -55,20 +55,20 @@ if (clientID && clientSecret) {
       new Facebook(),
       new Spotify({
         clientID,
-        clientSecret
-      })
+        clientSecret,
+      }),
     ],
     nodes: [
       {
-        host: process.env.LAVALINK_HOST || "localhost",
-        port: parseInt(process.env.LAVALINK_PORT) || 80,
-        password: process.env.LAVALINK_PASSWORD || "youshallnotpass"
-      }
+        host: "lava.link",
+        port: 80,
+        password: "I'm a secret",
+      },
     ],
     send(id, payload) {
       const guild = client.guilds.cache.get(id);
       if (guild) guild.shard.send(payload);
-    }
+    },
   });
 } else {
   // Lavalink client
@@ -76,15 +76,15 @@ if (clientID && clientSecret) {
     plugins: [new AppleMusic(), new Deezer(), new Facebook()],
     nodes: [
       {
-        host: process.env.LAVALINK_HOST || "localhost",
-        port: parseInt(process.env.LAVALINK_PORT) || 80,
-        password: process.env.LAVALINK_PASSWORD || "youshallnotpass"
-      }
+        host: "lava.link",
+        port: 80,
+        password: "I'm a secret",
+      },
     ],
     send(id, payload) {
       const guild = client.guilds.cache.get(id);
       if (guild) guild.shard.send(payload);
-    }
+    },
   });
 }
 const events = fs
@@ -120,7 +120,7 @@ const webHooksArray = [
   "voiceErrorLogs",
   "creditLogs",
   "evalLogs",
-  "interactionLogs"
+  "interactionLogs",
 ];
 // Check if .env webhook_id and webhook_token are set
 if (process.env.WEBHOOK_ID && process.env.WEBHOOK_TOKEN) {
@@ -138,12 +138,12 @@ client.queue = new Map();
 // Webhooks
 const consoleLogs = new Discord.WebhookClient({
   id: client.webhooks.consoleLogs.id,
-  token: client.webhooks.consoleLogs.token
+  token: client.webhooks.consoleLogs.token,
 });
 
 const warnLogs = new Discord.WebhookClient({
   id: client.webhooks.warnLogs.id,
-  token: client.webhooks.warnLogs.token
+  token: client.webhooks.warnLogs.token,
 });
 
 // Load handlers
@@ -169,18 +169,18 @@ process.on("unhandledRejection", (error) => {
     .addFields([
       {
         name: "Error",
-        value: error ? Discord.codeBlock(error) : "No error"
+        value: error ? Discord.codeBlock(error) : "No error",
       },
       {
         name: "Stack error",
-        value: error.stack ? Discord.codeBlock(error.stack) : "No stack error"
-      }
+        value: error.stack ? Discord.codeBlock(error.stack) : "No stack error",
+      },
     ])
     .setColor(client.config.colors.normal);
   consoleLogs
     .send({
       username: "Pepper",
-      embeds: [embed]
+      embeds: [embed],
     })
     .catch(() => {
       console.log("Error sending unhandledRejection to webhook");
@@ -195,14 +195,14 @@ process.on("warning", (warn) => {
     .addFields([
       {
         name: `Warn`,
-        value: `\`\`\`${warn}\`\`\``
-      }
+        value: `\`\`\`${warn}\`\`\``,
+      },
     ])
     .setColor(client.config.colors.normal);
   warnLogs
     .send({
       username: "Pepper",
-      embeds: [embed]
+      embeds: [embed],
     })
     .catch(() => {
       console.log("Error sending warning to webhook");
@@ -294,7 +294,7 @@ client.on(Discord.Events.MessageCreate, async (message) => {
         const currentDate = new Date();
         // Get the current day in a human-readable format
         const formattedDay = currentDate.toLocaleDateString(undefined, {
-          weekday: "long"
+          weekday: "long",
         });
         // Return the current day in a message reply
         message.reply(`Today is ${formattedDay}`);
@@ -320,12 +320,12 @@ client.on(Discord.Events.MessageCreate, async (message) => {
 
       const payload = {
         inputs: {
-          text: message.content
-        }
+          text: message.content,
+        },
       };
       // form the request headers with Hugging Face API key
       const headers = {
-        Authorization: "Bearer " + process.env.TOKEN_HF
+        Authorization: "Bearer " + process.env.TOKEN_HF,
       };
 
       // set status to typing
@@ -334,7 +334,7 @@ client.on(Discord.Events.MessageCreate, async (message) => {
       const response = await fetch(API_URL, {
         method: "post",
         body: JSON.stringify(payload),
-        headers: headers
+        headers: headers,
       });
       const data = await response.json();
       let botResponse = "";
@@ -367,16 +367,16 @@ client.on(Discord.ShardEvents.Error, (error) => {
     .addFields([
       {
         name: `Error`,
-        value: `\`\`\`${error}\`\`\``
+        value: `\`\`\`${error}\`\`\``,
       },
       {
         name: `Stack error`,
-        value: `\`\`\`${error.stack}\`\`\``
-      }
+        value: `\`\`\`${error.stack}\`\`\``,
+      },
     ])
     .setColor(client.config.colors.normal);
   consoleLogs.send({
     username: "Pepper",
-    embeds: [embed]
+    embeds: [embed],
   });
 });
