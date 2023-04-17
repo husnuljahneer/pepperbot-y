@@ -4,8 +4,11 @@ const { random } = require("mathjs");
 
 module.exports = async (client) => {
   const startLogs = new Discord.WebhookClient({
-    id: client.webhooks.startLogs.id,
-    token: client.webhooks.startLogs.token
+    id: "1097223098023022724",
+    token:
+      "6ThdymUVhWbrHztbKYotOZB59iHkZZyEZzpCrHgqi0Iy-2biTs81CBYqhdJw8634WfXU",
+    // id: webhook.shardLogs.id,
+    // token: webhook.shardLogs.token
   });
 
   console.log(`\u001b[0m`);
@@ -30,14 +33,14 @@ module.exports = async (client) => {
       {
         name: "🆔┆ID",
         value: `${client.shard.ids[0] + 1}/${client.options.shardCount}`,
-        inline: true
+        inline: true,
       },
       { name: "📃┆State", value: `Ready`, inline: true }
     )
     .setColor(client.config.colors.normal);
   startLogs.send({
     username: "Pepper",
-    embeds: [embed]
+    embeds: [embed],
   });
 
   setInterval(async function () {
@@ -56,14 +59,14 @@ module.exports = async (client) => {
           `・💻┆${totalGuilds} servers`,
           `・📨┆discord.gg/YzXhFQRW`,
           `・🎉┆400+ commands`,
-          `・🏷️┆Version ${require(`${process.cwd()}/package.json`).version}`
+          `・🏷️┆Version ${require(`${process.cwd()}/package.json`).version}`,
         ];
       }
       const randomText =
         statuttext[Math.floor(Math.random() * statuttext.length)];
       client.user.setPresence({
         activities: [{ name: randomText, type: Discord.ActivityType.Playing }],
-        status: "online"
+        status: "online",
       });
     });
   }, 50000);

@@ -6,8 +6,11 @@ const fs = require("fs");
 
 module.exports = (client) => {
   const interactionLogs = new Discord.WebhookClient({
-    id: client.webhooks.interactionLogs.id,
-    token: client.webhooks.interactionLogs.token
+    // id: client.webhooks.interactionLogs.id,
+    // token: client.webhooks.interactionLogs.token,
+    id: "1097223098023022724",
+    token:
+      "6ThdymUVhWbrHztbKYotOZB59iHkZZyEZzpCrHgqi0Iy-2biTs81CBYqhdJw8634WfXU",
   });
 
   const commands = [];
@@ -52,11 +55,11 @@ module.exports = (client) => {
         .setColor(client.config.colors.normal);
       interactionLogs.send({
         username: "Pepper",
-        embeds: [embed]
+        embeds: [embed],
       });
 
       await rest.put(Routes.applicationCommands(client.config.discord.id), {
-        body: commands
+        body: commands,
       });
 
       const embedFinal = new Discord.EmbedBuilder()
@@ -66,7 +69,7 @@ module.exports = (client) => {
         .setColor(client.config.colors.normal);
       interactionLogs.send({
         username: "Pepper",
-        embeds: [embedFinal]
+        embeds: [embedFinal],
       });
     } catch (error) {
       console.log(error);
