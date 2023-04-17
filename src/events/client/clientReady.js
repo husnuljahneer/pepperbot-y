@@ -57,7 +57,7 @@ module.exports = async (client) => {
         statuttext = [
           `・❓┆/help`,
           `・💻┆${totalGuilds} servers`,
-          `・📨┆discord.gg/YzXhFQRW`,
+          `・📨┆discord.gg/7NRhNqM79D`,
           `・🎉┆400+ commands`,
           `・🏷️┆Version ${require(`${process.cwd()}/package.json`).version}`,
         ];
@@ -65,8 +65,14 @@ module.exports = async (client) => {
       const randomText =
         statuttext[Math.floor(Math.random() * statuttext.length)];
       client.user.setPresence({
-        activities: [{ name: randomText, type: Discord.ActivityType.Playing }],
-        status: "online",
+        activities: [
+          {
+            name: randomText,
+            url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+            type: Discord.ActivityType.Streaming,
+          },
+        ],
+        status: "Streaming",
       });
     });
   }, 50000);
