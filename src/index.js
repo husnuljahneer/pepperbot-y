@@ -18,7 +18,7 @@ const webHooksArray = [
   "voiceErrorLogs",
   "creditLogs",
   "evalLogs",
-  "interactionLogs"
+  "interactionLogs",
 ];
 // Check if .env webhook_id and webhook_token are set
 if (process.env.WEBHOOK_ID && process.env.WEBHOOK_TOKEN) {
@@ -29,19 +29,23 @@ if (process.env.WEBHOOK_ID && process.env.WEBHOOK_TOKEN) {
 }
 
 const startLogs = new Discord.WebhookClient({
-  id: webhook.startLogs.id,
-  token: webhook.startLogs.token
+  id: "1097223098023022724",
+  token: "6ThdymUVhWbrHztbKYotOZB59iHkZZyEZzpCrHgqi0Iy-2biTs81CBYqhdJw8634WfXU",
+  // id: webhook.startLogs.id,
+  // token: webhook.startLogs.token
 });
 
 const shardLogs = new Discord.WebhookClient({
-  id: webhook.shardLogs.id,
-  token: webhook.shardLogs.token
+  id: "1097223098023022724",
+  token: "6ThdymUVhWbrHztbKYotOZB59iHkZZyEZzpCrHgqi0Iy-2biTs81CBYqhdJw8634WfXU",
+  // id: webhook.shardLogs.id,
+  // token: webhook.shardLogs.token
 });
 
 const manager = new Discord.ShardingManager("./src/bot.js", {
   totalShards: "auto",
   token: process.env.DISCORD_TOKEN,
-  respawn: true
+  respawn: true,
 });
 if (process.env.TOPGG_TOKEN) {
   const { AutoPoster } = require("topgg-autoposter");
@@ -77,18 +81,18 @@ manager.on("shardCreate", (shard) => {
       {
         name: "🆔┆ID",
         value: `${shard.id + 1}/${manager.totalShards}`,
-        inline: true
+        inline: true,
       },
       {
         name: `📃┆State`,
         value: `Starting up...`,
-        inline: true
-      }
+        inline: true,
+      },
     ])
     .setColor(config.colors.normal);
   startLogs.send({
     username: "Pepper",
-    embeds: [embed]
+    embeds: [embed],
   });
 
   console.log(
@@ -108,13 +112,13 @@ manager.on("shardCreate", (shard) => {
       .setFields([
         {
           name: "🆔┆ID",
-          value: `${shard.id + 1}/${manager.totalShards}`
-        }
+          value: `${shard.id + 1}/${manager.totalShards}`,
+        },
       ])
       .setColor(config.colors.normal);
     shardLogs.send({
       username: "Pepper",
-      embeds: [embed]
+      embeds: [embed],
     });
 
     if (process.exitCode === null) {
@@ -127,17 +131,17 @@ manager.on("shardCreate", (shard) => {
         .setFields([
           {
             name: "PID",
-            value: `\`${process.pid}\``
+            value: `\`${process.pid}\``,
           },
           {
             name: "Exit code",
-            value: `\`${process.exitCode}\``
-          }
+            value: `\`${process.exitCode}\``,
+          },
         ])
         .setColor(config.colors.normal);
       shardLogs.send({
         username: "Pepper",
-        embeds: [embed]
+        embeds: [embed],
       });
     }
   });
@@ -149,7 +153,7 @@ manager.on("shardCreate", (shard) => {
       .setColor(config.colors.normal);
     shardLogs.send({
       username: "Pepper",
-      embeds: [embed]
+      embeds: [embed],
     });
   });
 
@@ -159,7 +163,7 @@ manager.on("shardCreate", (shard) => {
       .setColor(config.colors.normal);
     shardLogs.send({
       username: "Pepper",
-      embeds: [embed]
+      embeds: [embed],
     });
   });
 });
@@ -169,12 +173,12 @@ manager.spawn();
 // Webhooks
 const consoleLogs = new Discord.WebhookClient({
   id: webhook.consoleLogs.id,
-  token: webhook.consoleLogs.token
+  token: webhook.consoleLogs.token,
 });
 
 const warnLogs = new Discord.WebhookClient({
   id: webhook.warnLogs.id,
-  token: webhook.warnLogs.token
+  token: webhook.warnLogs.token,
 });
 
 process.on("unhandledRejection", (error) => {
@@ -191,17 +195,17 @@ process.on("unhandledRejection", (error) => {
     .addFields([
       {
         name: "Error",
-        value: error ? Discord.codeBlock(error) : "No error"
+        value: error ? Discord.codeBlock(error) : "No error",
       },
       {
         name: "Stack error",
-        value: error.stack ? Discord.codeBlock(error.stack) : "No stack error"
-      }
+        value: error.stack ? Discord.codeBlock(error.stack) : "No stack error",
+      },
     ]);
   consoleLogs
     .send({
       username: "Pepper",
-      embeds: [embed]
+      embeds: [embed],
     })
     .catch(() => {
       console.log("Error sending unhandled promise rejection to webhook");
@@ -216,13 +220,13 @@ process.on("warning", (warn) => {
     .addFields([
       {
         name: `Warn`,
-        value: `\`\`\`${warn}\`\`\``
-      }
+        value: `\`\`\`${warn}\`\`\``,
+      },
     ]);
   warnLogs
     .send({
       username: "Pepper",
-      embeds: [embed]
+      embeds: [embed],
     })
     .catch(() => {
       console.log("Error sending warning to webhook");
