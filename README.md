@@ -1,1 +1,1 @@
-# Peppe Bot
+# Pepper Bot
