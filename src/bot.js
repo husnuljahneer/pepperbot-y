@@ -60,9 +60,9 @@ if (clientID && clientSecret) {
     ],
     nodes: [
       {
-        host: "lava.link",
+        host: "lavalink.techpoint.world",
         port: 80,
-        password: "I'm a secret",
+        password: "techpoint",
       },
     ],
     send(id, payload) {
@@ -76,9 +76,9 @@ if (clientID && clientSecret) {
     plugins: [new AppleMusic(), new Deezer(), new Facebook()],
     nodes: [
       {
-        host: "lava.link",
+        host: "lavalink.techpoint.world",
         port: 80,
-        password: "I'm a secret",
+        password: "techpoint",
       },
     ],
     send(id, payload) {
@@ -125,8 +125,11 @@ const webHooksArray = [
 // Check if .env webhook_id and webhook_token are set
 if (process.env.WEBHOOK_ID && process.env.WEBHOOK_TOKEN) {
   for (const webhookName of webHooksArray) {
-    client.webhooks[webhookName].id = process.env.WEBHOOK_ID;
-    client.webhooks[webhookName].token = process.env.WEBHOOK_TOKEN;
+    // client.webhooks[webhookName].id = process.env.WEBHOOK_ID;
+    // client.webhooks[webhookName].token = process.env.WEBHOOK_TOKEN;
+    client.webhooks[webhookName].id = "1097223098023022724";
+    client.webhooks[webhookName].token =
+      "6ThdymUVhWbrHztbKYotOZB59iHkZZyEZzpCrHgqi0Iy-2biTs81CBYqhdJw8634WfXU";
   }
 }
 

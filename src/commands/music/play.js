@@ -1,16 +1,6 @@
 const Discord = require("discord.js");
 
 module.exports = async (client, interaction, args) => {
-  client.embed(
-    {
-      title: "Important",
-      desc: `Music command is facing some issues, may not work!`,
-      thumbnail: client.user.avatarURL({ size: 1024 }),
-      type: "editreply",
-    },
-    interaction
-  );
-
   if (!interaction.member.voice.channel)
     return client.errNormal(
       {
