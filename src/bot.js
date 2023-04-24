@@ -356,6 +356,7 @@ client.on(Discord.Events.MessageCreate, async (message) => {
           console.log(outputString, "OUTSTRING");
           botResponse = outputString;
         }
+        botResponse = data.response;
       } else {
         botResponse =
           "Something went wrong, Please contact WarM4chineRoxX#2013";
