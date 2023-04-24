@@ -341,7 +341,14 @@ client.on(Discord.Events.MessageCreate, async (message) => {
       );
       const data = await response.json();
       console.log(data, "><><><><<><><>< LOGGING THE DATAS");
-      let botResponse = "ERROR";
+      let botResponse = "";
+
+      if (data.response) {
+        botResponse = data.response;
+      } else {
+        botResponse =
+          "Something went wrong, Please contact WarM4chineRoxX#2013";
+      }
 
       // // query the server
       // const response = await fetch(API_URL, {
