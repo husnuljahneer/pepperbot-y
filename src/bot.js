@@ -344,16 +344,14 @@ client.on(Discord.Events.MessageCreate, async (message) => {
       let botResponse = "";
 
       if (data.response) {
-        inputString = data.response;
-        botResponse = inputString;
-        if (inputString.includes("Acobot Team")) {
+        if (data.response.includes("Acobot Team")) {
           outputString = data.response.replace(
             "Acobot Team",
             "WarM4chineRoxX#2013"
           );
           botResponse = outputString;
         }
-        if (inputString.includes("acobot.ai")) {
+        if (data.response.includes("acobot.ai")) {
           outputString = data.response.replace("acobot.ai", "Kerala, India");
           botResponse = outputString;
         }
