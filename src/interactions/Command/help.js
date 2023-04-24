@@ -56,6 +56,10 @@ module.exports = {
         image: "https://i.imgur.com/EpbeZYr.png",
         fields: [
           {
+            name: `:thought_balloon: ┆ Pepper chat bot!`,
+            value: `Create a channel named #pepper-bot and start chatting!`
+          },
+          {
             name: `❌┆Menu doesn't work?`,
             value: `Try resending the command. If you get no reaction, make sure you report the bug!`
           },
