@@ -334,6 +334,7 @@ client.on(Discord.Events.MessageCreate, async (message) => {
       // set status to typing
       message.channel.sendTyping();
       const input = message.content;
+      let botResponse = "";
       fetch(
         `https://api.coreware.nl/fun/chat?msg=${encodeURIComponent(
           input
