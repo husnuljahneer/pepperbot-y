@@ -344,6 +344,7 @@ client.on(Discord.Events.MessageCreate, async (message) => {
           console.log(error);
         })
         .then((res) => {
+          console.log("Inside the response testing.....");
           botResponse = res.response;
         })
         .catch(() => {
