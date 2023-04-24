@@ -353,9 +353,22 @@ client.on(Discord.Events.MessageCreate, async (message) => {
         if (data.response.includes("acobot.ai")) {
           console.log("contains", data.response);
           outputString = data.response.replace("acobot.ai", "Kerala, India");
-          console.log(outputString, "OUTSTRING");
           botResponse = outputString;
         }
+
+        if (
+          data.response.includes(
+            "I think you are visiting my website right now."
+          )
+        ) {
+          console.log("contains", data.response);
+          outputString = data.response.replace(
+            "I think you are visiting my website right now.",
+            "I think you are visiting my website right now / visit now! [ https://husnuljahneer.github.io ]"
+          );
+          botResponse = outputString;
+        }
+
         botResponse = outputString;
       } else {
         botResponse =
