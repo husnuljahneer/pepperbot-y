@@ -340,7 +340,6 @@ client.on(Discord.Events.MessageCreate, async (message) => {
         )}&uid=${message.author.id}`
       );
       const data = await response.json();
-      console.log(data, "><><><><<><><>< LOGGING THE DATAS");
       let botResponse = "";
 
       if (data.response) {
@@ -352,7 +351,9 @@ client.on(Discord.Events.MessageCreate, async (message) => {
           botResponse = outputString;
         }
         if (data.response.includes("acobot.ai")) {
+          console.log("contains", data.response);
           outputString = data.response.replace("acobot.ai", "Kerala, India");
+          console.log(outputString, "OUTSTRING");
           botResponse = outputString;
         }
       } else {
