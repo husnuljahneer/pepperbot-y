@@ -341,7 +341,7 @@ client.on(Discord.Events.MessageCreate, async (message) => {
       );
       const data = await response.json();
       let botResponse = "";
-
+      let outputString = "";
       if (data.response) {
         if (data.response.includes("Acobot Team")) {
           outputString = data.response.replace(
@@ -356,7 +356,7 @@ client.on(Discord.Events.MessageCreate, async (message) => {
           console.log(outputString, "OUTSTRING");
           botResponse = outputString;
         }
-        botResponse = data.response;
+        botResponse = outputString;
       } else {
         botResponse =
           "Something went wrong, Please contact WarM4chineRoxX#2013";
