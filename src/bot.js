@@ -282,21 +282,6 @@ client.on(Discord.Events.MessageCreate, async (message) => {
         return;
       }
 
-      //maths equations
-      if (message.content.match(/[0-9]+\s*[\+\-\*\/%]\s*[0-9]+/g)) {
-        // Extract the arithmetic expression from the message
-        const expression = message.content.match(
-          /[0-9]+\s*[\+\-\*\/%]\s*[0-9]+/g
-        )[0];
-        // Remove any spaces from the expression
-        const cleanedExpression = expression.replace(/\s/g, "");
-        // Evaluate the arithmetic expression and return the result
-        const result = eval(cleanedExpression);
-
-        message.reply(`The result of ${expression} is ${result}`);
-        return;
-      }
-
       // API_URL = API_URL_HF;
 
       // const payload = {
