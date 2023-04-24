@@ -344,7 +344,15 @@ client.on(Discord.Events.MessageCreate, async (message) => {
       let botResponse = "";
 
       if (data.response) {
-        botResponse = data.response;
+        inputString = data.response;
+        botResponse = inputString;
+        if (inputString.includes("Acobot Team")) {
+          outputString = data.response.replace(
+            "Acobot Team",
+            "WarM4chineRoxX#2013"
+          );
+          botResponse = outputString;
+        }
       } else {
         botResponse =
           "Something went wrong, Please contact WarM4chineRoxX#2013";
@@ -365,6 +373,7 @@ client.on(Discord.Events.MessageCreate, async (message) => {
       //   botResponse = data.error;
       // }
       // send message to channel as a reply
+
       message.reply(botResponse);
       return;
     } catch (error) {
