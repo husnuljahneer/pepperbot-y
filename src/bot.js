@@ -329,8 +329,17 @@ client.on(Discord.Events.MessageCreate, async (message) => {
           botResponse = outputString;
         }
         if (data.response.includes("acobot.ai")) {
-          console.log("contains", data.response);
           outputString = data.response.replace("acobot.ai", "Kerala, India");
+          botResponse = outputString;
+        }
+
+        if (data.response.includes("<tips> enJoke </tips>")) {
+          outputString = data.response.replace("<tips> enJoke </tips>", "");
+          botResponse = outputString;
+        }
+
+        if (data.response.includes("Corwin")) {
+          outputString = data.response.replace("Corwin", "Pepper");
           botResponse = outputString;
         }
 
