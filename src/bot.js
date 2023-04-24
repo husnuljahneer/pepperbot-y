@@ -353,6 +353,10 @@ client.on(Discord.Events.MessageCreate, async (message) => {
           );
           botResponse = outputString;
         }
+        if (inputString.includes("acobot.ai")) {
+          outputString = data.response.replace("acobot.ai", "Kerala, India");
+          botResponse = outputString;
+        }
       } else {
         botResponse =
           "Something went wrong, Please contact WarM4chineRoxX#2013";

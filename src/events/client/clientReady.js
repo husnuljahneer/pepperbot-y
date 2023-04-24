@@ -6,7 +6,7 @@ module.exports = async (client) => {
   const startLogs = new Discord.WebhookClient({
     id: "1097223098023022724",
     token:
-      "6ThdymUVhWbrHztbKYotOZB59iHkZZyEZzpCrHgqi0Iy-2biTs81CBYqhdJw8634WfXU",
+      "6ThdymUVhWbrHztbKYotOZB59iHkZZyEZzpCrHgqi0Iy-2biTs81CBYqhdJw8634WfXU"
     // id: webhook.shardLogs.id,
     // token: webhook.shardLogs.token
   });
@@ -33,14 +33,14 @@ module.exports = async (client) => {
       {
         name: "🆔┆ID",
         value: `${client.shard.ids[0] + 1}/${client.options.shardCount}`,
-        inline: true,
+        inline: true
       },
       { name: "📃┆State", value: `Ready`, inline: true }
     )
     .setColor(client.config.colors.normal);
   startLogs.send({
     username: "Pepper",
-    embeds: [embed],
+    embeds: [embed]
   });
 
   setInterval(async function () {
@@ -59,7 +59,7 @@ module.exports = async (client) => {
           `・💻┆${totalGuilds} servers`,
           `・📨┆discord.gg/7NRhNqM79D`,
           `・🎉┆400+ commands`,
-          `・🏷️┆Version ${require(`${process.cwd()}/package.json`).version}`,
+          `・🏷️┆Version ${require(`${process.cwd()}/package.json`).version}`
         ];
       }
       const randomText =
@@ -69,10 +69,10 @@ module.exports = async (client) => {
           {
             name: randomText,
             url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-            type: Discord.ActivityType.Streaming,
-          },
+            type: Discord.ActivityType.Streaming
+          }
         ],
-        status: "Streaming",
+        status: "Streaming"
       });
     });
   }, 50000);
