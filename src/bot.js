@@ -333,6 +333,14 @@ client.on(Discord.Events.MessageCreate, async (message) => {
           botResponse = outputString;
         }
 
+        if (data.response.includes("March 18, 2012")) {
+          outputString = data.response.replace(
+            "March 18, 2012",
+            "August 18, 2012"
+          );
+          botResponse = outputString;
+        }
+
         if (data.response.includes("<tips> enJoke </tips>")) {
           outputString = data.response.replace("<tips> enJoke </tips>", "");
           botResponse = outputString;
