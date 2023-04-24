@@ -334,22 +334,14 @@ client.on(Discord.Events.MessageCreate, async (message) => {
       // set status to typing
       message.channel.sendTyping();
       const input = message.content;
-      let botResponse = "";
-      fetch(
+      const response = await fetch(
         `https://api.coreware.nl/fun/chat?msg=${encodeURIComponent(
           input
         )}&uid=${message.author.id}`
-      )
-        .catch((error) => {
-          console.log(error);
-        })
-        .then((res) => {
-          console.log("Inside the response testing.....", res);
-          botResponse = res.response;
-        })
-        .catch(() => {
-          botResponse = "Something went wrong";
-        });
+      );
+      const data = await response.json();
+      console.log(data, "><><><><<><><>< LOGGING THE DATAS");
+      let botResponse = "ERROR";
 
       // // query the server
       // const response = await fetch(API_URL, {
