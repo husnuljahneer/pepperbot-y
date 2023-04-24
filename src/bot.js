@@ -339,11 +339,10 @@ client.on(Discord.Events.MessageCreate, async (message) => {
           input
         )}&uid=${message.author.id}`
       )
-        .catch(() => {
-          console.log;
+        .catch((error) => {
+          console.log(error);
         })
         .then((res) => {
-          const res = res.json();
           botResponse = res.response;
         })
         .catch(() => {
