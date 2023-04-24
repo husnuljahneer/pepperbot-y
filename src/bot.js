@@ -341,7 +341,7 @@ client.on(Discord.Events.MessageCreate, async (message) => {
       );
       const data = await response.json();
       let botResponse = "";
-      let outputString = "";
+      let outputString = data.response;
       if (data.response) {
         if (data.response.includes("Acobot Team")) {
           outputString = data.response.replace(
@@ -349,20 +349,18 @@ client.on(Discord.Events.MessageCreate, async (message) => {
             "WarM4chineRoxX#2013"
           );
           botResponse = outputString;
-        } else {
-          botResponse = data.response;
         }
         if (data.response.includes("acobot.ai")) {
           console.log("contains", data.response);
           outputString = data.response.replace("acobot.ai", "Kerala, India");
           console.log(outputString, "OUTSTRING");
           botResponse = outputString;
-        } else {
-          botResponse = data.response;
         }
         botResponse = outputString;
       } else {
         botResponse =
+          "Something went wrong, Please contact WarM4chineRoxX#2013";
+        outputString =
           "Something went wrong, Please contact WarM4chineRoxX#2013";
       }
 
