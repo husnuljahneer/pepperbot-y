@@ -247,28 +247,6 @@ client.on(Discord.Events.MessageCreate, async (message) => {
         return;
       }
 
-      //tell a joke
-      if (
-        message.content.toLowerCase().includes("tell me a joke") ||
-        message.content.toLowerCase().includes("joke please") ||
-        message.content.toLowerCase().includes("make me laugh") ||
-        message.content.toLowerCase().includes("funny joke") ||
-        message.content.toLowerCase().includes("joke time")
-      ) {
-        // Fetch a random joke from the API
-        const response = await fetch(
-          "https://official-joke-api.appspot.com/random_joke"
-        );
-        const data = await response.json();
-
-        // Create an embedded message with the joke
-
-        // Send the embedded message to the channel
-        message.channel.send(data.setup + " " + data.punchline);
-
-        return;
-      }
-
       //current time
 
       if (
@@ -319,17 +297,17 @@ client.on(Discord.Events.MessageCreate, async (message) => {
         return;
       }
 
-      API_URL = API_URL_HF;
+      // API_URL = API_URL_HF;
 
-      const payload = {
-        inputs: {
-          text: message.content
-        }
-      };
+      // const payload = {
+      //   inputs: {
+      //     text: message.content
+      //   }
+      // };
       // form the request headers with Hugging Face API key
-      const headers = {
-        Authorization: "Bearer " + process.env.TOKEN_HF
-      };
+      // const headers = {
+      //   Authorization: "Bearer " + process.env.TOKEN_HF
+      // };
 
       // set status to typing
       message.channel.sendTyping();
