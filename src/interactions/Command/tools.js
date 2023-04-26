@@ -170,14 +170,14 @@ module.exports = {
             .setRequired(true)
         )
     )
-    .addSubcommand((subcommand) =>
-      subcommand
-        .setName("chatgpt")
-        .setDescription("ChatGpt Integration [Test Mode]")
-        .addStringOption((option) =>
-          option.setName("text").setDescription("Your Prompt").setRequired(true)
-        )
-    )
+    // .addSubcommand((subcommand) =>
+    //   subcommand
+    //     .setName("chatgpt")
+    //     .setDescription("ChatGpt Integration [Test Mode]")
+    //     .addStringOption((option) =>
+    //       option.setName("text").setDescription("Your Prompt").setRequired(true)
+    //     )
+    // )
     .addSubcommand((subcommand) =>
       subcommand
         .setName("review")
