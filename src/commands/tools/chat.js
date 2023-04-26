@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const Discord = require("discord.js");
 const { Configuration, OpenAIApi } = require("openai");
 const configuration = new Configuration({
-  apiKey: "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"
+  apiKey: process.env.OPENAI
 });
 const openai = new OpenAIApi(configuration);
 
