@@ -79,6 +79,12 @@ module.exports = {
     )
     .addSubcommand((subcommand) =>
       subcommand.setName("dare").setDescription("Play Dare Game")
+    )
+    .addSubcommand((subcommand) =>
+      subcommand.setName("truth").setDescription("Play Never Have I Ever")
+    )
+    .addSubcommand((subcommand) =>
+      subcommand.setName("truth").setDescription("Play Paranoia Question")
     ),
 
   /**
