@@ -172,7 +172,7 @@ module.exports = {
     )
     .addSubcommand((subcommand) =>
       subcommand
-        .setName("ChatGpt")
+        .setName("chatgpt")
         .setDescription("ChatGpt Integration [Test Mode]")
         .addStringOption((option) =>
           option.setName("Text").setDescription("Your Prompt").setRequired(true)
