@@ -6,7 +6,7 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 module.exports = async (client, interaction, args) => {
-  const text = interaction.options.getString("text");
+  const text = interaction.options.getString("chat");
 
   let prompt = `You: ${text}\n`;
 
