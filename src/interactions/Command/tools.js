@@ -175,7 +175,7 @@ module.exports = {
         .setName("chatgpt")
         .setDescription("ChatGpt Integration [Test Mode]")
         .addStringOption((option) =>
-          option.setName("Text").setDescription("Your Prompt").setRequired(true)
+          option.setName("text").setDescription("Your Prompt").setRequired(true)
         )
     )
     .addSubcommand((subcommand) =>
